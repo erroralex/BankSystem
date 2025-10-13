@@ -4,7 +4,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 
-
 public class Operations {
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -64,7 +63,7 @@ public class Operations {
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-    //Method to make withdraws
+    //Method to make withdrawals
     public static void withdraw(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
@@ -181,6 +180,7 @@ public class Operations {
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
+    //Method to create new account
     public static void openAccount(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         System.out.println(Menu.textBlocks());
@@ -226,8 +226,9 @@ public class Operations {
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
+    //Method to close and existing account
     public static void closeAccount(Scanner scanner, List<BankSystem> accountList) {
-        
+
         if (accountList.isEmpty()) {
             System.out.println("No accounts to delete.");
             return;

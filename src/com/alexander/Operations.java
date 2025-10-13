@@ -8,7 +8,7 @@ import java.util.List;
 public class Operations {
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-    //Metod för att rensa konsollen
+    //Method to clear the console
     public static void clearScreen() {
         for (int i = 0; i < 50; i++) {
             System.out.println();
@@ -17,7 +17,7 @@ public class Operations {
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-    //Metod för att göra insättning
+    //Method to make deposits
     public static void deposit(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
@@ -64,7 +64,7 @@ public class Operations {
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-    //Metod för att göra uttag
+    //Method to make withdraws
     public static void withdraw(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
@@ -113,7 +113,7 @@ public class Operations {
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-    //Metod för att överföra mellan konton
+    //Method to transfer between accounts
     public static void transfer(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
@@ -160,12 +160,11 @@ public class Operations {
         }
 
         System.out.print("\nPress [ENTER] to return to the menu...");
-        //scanner.nextLine();
     }
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-    //Metod för att lista alla konton
+    //Method to list all accounts
     public static void listAll(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
@@ -178,7 +177,6 @@ public class Operations {
             }
         }
         System.out.print("\nPress [ENTER] to return to the menu...");
-        //scanner.nextLine();
     }
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -224,13 +222,12 @@ public class Operations {
         System.out.println("\nNew account created: " + accountName + " - Balance: " + balance + ":-");
 
         System.out.print("\nPress [ENTER] to return to the menu...");
-        //scanner.nextLine();
     }
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
     public static void closeAccount(Scanner scanner, List<BankSystem> accountList) {
-        //clearScreen();
+        
         if (accountList.isEmpty()) {
             System.out.println("No accounts to delete.");
             return;

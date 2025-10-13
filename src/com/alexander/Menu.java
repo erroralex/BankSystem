@@ -77,6 +77,5 @@ public class Menu {
                 break;
         }
         scanner.nextLine();
-
     }
 }

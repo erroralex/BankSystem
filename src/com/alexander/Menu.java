@@ -43,27 +43,33 @@ public class Menu {
         switch (menuChoice) {
 
             case 1:
-                Operations.listAll(scanner, accountList);
+                Operations listAll = new Operations();
+                listAll.listAll(scanner, accountList);
                 break;
 
             case 2:
-                Operations.deposit(scanner, accountList);
+                Operations deposit = new Operations();
+                deposit.deposit(scanner, accountList);
                 break;
 
             case 3:
-                Operations.withdraw(scanner, accountList);
+                Operations withdraw = new Operations();
+                withdraw.withdraw(scanner, accountList);
                 break;
 
             case 4:
-                Operations.transfer(scanner, accountList);
+                Operations transfer = new Operations();
+                transfer.transfer(scanner, accountList);
                 break;
 
             case 5:
-                Operations.openAccount(scanner, accountList);
+                Operations openAccount = new Operations();
+                openAccount.openAccount(scanner, accountList);
                 break;
 
             case 6:
-                Operations.closeAccount(scanner, accountList);
+                Operations closeAccount = new Operations();
+                closeAccount.closeAccount(scanner, accountList);
                 break;
 
             case 0:

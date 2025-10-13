@@ -160,7 +160,7 @@ public class Operations {
         }
 
         System.out.print("\nPress [ENTER] to return to the menu...");
-        scanner.nextLine();
+        //scanner.nextLine();
     }
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -178,7 +178,7 @@ public class Operations {
             }
         }
         System.out.print("\nPress [ENTER] to return to the menu...");
-        scanner.nextLine();
+        //scanner.nextLine();
     }
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -187,7 +187,6 @@ public class Operations {
         clearScreen();
         System.out.println(Menu.textBlocks());
         System.out.println("\nOpen a new bank account:");
-        scanner.nextLine();
         System.out.print("Enter account name: ");
         String accountName = scanner.nextLine();
 
@@ -225,7 +224,7 @@ public class Operations {
         System.out.println("\nNew account created: " + accountName + " - Balance: " + balance + ":-");
 
         System.out.print("\nPress [ENTER] to return to the menu...");
-        scanner.nextLine();
+        //scanner.nextLine();
     }
 
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -239,7 +238,6 @@ public class Operations {
 
         System.out.println(Menu.textBlocks());
         System.out.println("\nClose an existing bank account:");
-        scanner.nextLine();
 
         for (int i = 0; i < accountList.size(); i++) {
             System.out.println((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");

@@ -17,7 +17,7 @@ public class Operations {
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
     //Method to make deposits
-    public static void deposit(Scanner scanner, List<BankSystem> accountList) {
+    public void deposit(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
             System.out.println("No accounts to deposit into.");
@@ -64,7 +64,7 @@ public class Operations {
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
     //Method to make withdrawals
-    public static void withdraw(Scanner scanner, List<BankSystem> accountList) {
+    public void withdraw(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
             System.out.println("No accounts to withdraw from.");
@@ -113,7 +113,7 @@ public class Operations {
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
     //Method to transfer between accounts
-    public static void transfer(Scanner scanner, List<BankSystem> accountList) {
+    public void transfer(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
             System.out.println("No accounts to transfer from.");
@@ -164,7 +164,7 @@ public class Operations {
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
     //Method to list all accounts
-    public static void listAll(Scanner scanner, List<BankSystem> accountList) {
+    public void listAll(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
             System.out.println("No accounts to display.");
@@ -181,7 +181,7 @@ public class Operations {
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
     //Method to create new account
-    public static void openAccount(Scanner scanner, List<BankSystem> accountList) {
+    public void openAccount(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         System.out.println(Menu.textBlocks());
         System.out.println("\nOpen a new bank account:");
@@ -227,7 +227,7 @@ public class Operations {
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
     //Method to close and existing account
-    public static void closeAccount(Scanner scanner, List<BankSystem> accountList) {
+    public void closeAccount(Scanner scanner, List<BankSystem> accountList) {
 
         if (accountList.isEmpty()) {
             System.out.println("No accounts to delete.");

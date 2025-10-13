@@ -5,6 +5,7 @@ public class BankSystem {
 
     private double balance;
     private String accountName;
+    private Operations operations;
 
     public BankSystem() {
 
@@ -29,6 +30,14 @@ public class BankSystem {
 
     public void setBalance() {
         this.balance = balance;
+    }
+
+    public Operations getOperations() {
+        return operations;
+    }
+
+    public void setOperations(Operations operations) {
+        this.operations = operations;
     }
 
     @Override

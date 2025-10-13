@@ -6,6 +6,7 @@ import java.util.Scanner;
 //58. Implementera en klass BankSystem som hanterar flera konton och överföringar mellan dem.
 public class Main {
 
+
     static boolean isRunning = true;
     static Scanner scanner = new Scanner(System.in);
     static java.util.List<BankSystem> accountList = new java.util.ArrayList<>();

@@ -20,14 +20,14 @@ public class Operations {
     public void deposit(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
-            System.out.println("No accounts to deposit into.");
+            PrintColor.red("No accounts to deposit into.[ENTER] to continue: ");
             return;
         }
 
-        System.out.println(Menu.textBlocks());
+        PrintColor.cyan(Menu.textBlocks());
         System.out.println("\nList of all accounts:");
         for (int i = 0; i < accountList.size(); i++) {
-            System.out.println((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");
+            PrintColor.green((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");
         }
 
         System.out.print("Enter the number of the account to deposit into: ");
@@ -44,20 +44,21 @@ public class Operations {
                     if (amount > 0) {
                         break;
                     } else {
-                        System.out.println("Invalid deposit amount. Please enter a positive number.");
+                        PrintColor.red("Invalid deposit amount. Please enter a positive number.");
                     }
                 } catch (InputMismatchException e) {
-                    System.out.println("Invalid input. Please enter a valid number.");
+                    PrintColor.red("Invalid input. Please enter a valid number.");
                     scanner.nextLine();
                 }
             }
             accountList.get(index).deposit(amount);
-            System.out.println("\nDeposited " + amount + ":- to " + accountList.get(index).getAccountName() + " account. New Balance: " + accountList.get(index).getBalance() + ":-");
+            PrintColor.green("\nDeposited " + amount + ":- to " + accountList.get(index).getAccountName() + " account. " +
+                    "New Balance: " + accountList.get(index).getBalance() + ":-");
 
             System.out.print("\nPress [ENTER] to return to the menu...");
             scanner.nextLine();
         } else {
-            System.out.println("Invalid account number.");
+            PrintColor.red("Invalid account number.");
         }
     }
 
@@ -67,14 +68,14 @@ public class Operations {
     public void withdraw(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
-            System.out.println("No accounts to withdraw from.");
+            PrintColor.red("No accounts to withdraw from.");
             return;
         }
 
-        System.out.println(Menu.textBlocks());
+        PrintColor.cyan(Menu.textBlocks());
         System.out.println("\nList of all accounts:");
         for (int i = 0; i < accountList.size(); i++) {
-            System.out.println((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");
+            PrintColor.green((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");
         }
 
         System.out.print("Enter the number of the account to withdraw from: ");
@@ -92,21 +93,21 @@ public class Operations {
                     if (amount > 0 && amount <= accountList.get(index).getBalance()) {
                         break;
                     } else {
-                        System.out.println("Invalid withdrawal amount. Please enter a positive number " + "less than or equal to the balance of the source account.");
+                        PrintColor.red("Invalid withdrawal amount. Please enter a positive number " + "less than or equal to the balance of the source account.");
                     }
                 } catch (InputMismatchException e) {
-                    System.out.println("Invalid input. Please enter a valid number.");
+                    PrintColor.red("Invalid input. Please enter a valid number.");
                     scanner.nextLine();
                 }
             }
             accountList.get(index).withdraw(amount);
-            System.out.println("Withdrawed " + amount + ":- from " + accountList.get(index).getAccountName() + " account. New Balance: " + accountList.get(index).getBalance() + ":-");
+            PrintColor.green("Withdrew " + amount + ":- from " + accountList.get(index).getAccountName() + " account. New Balance: " + accountList.get(index).getBalance() + ":-");
 
             System.out.print("\nPress [ENTER] to return to the menu...");
             scanner.nextLine();
 
         } else {
-            System.out.println("Invalid account number.");
+            PrintColor.red("Invalid account number.");
         }
     }
 
@@ -116,14 +117,14 @@ public class Operations {
     public void transfer(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
-            System.out.println("No accounts to transfer from.");
+            PrintColor.red("No accounts to transfer from.");
             return;
         }
 
-        System.out.println(Menu.textBlocks());
+        PrintColor.cyan(Menu.textBlocks());
         System.out.println("\nList of all accounts:");
         for (int i = 0; i < accountList.size(); i++) {
-            System.out.println((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");
+            PrintColor.green((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");
         }
 
         System.out.print("Enter the number of the account to transfer from: ");
@@ -138,7 +139,7 @@ public class Operations {
             if (amount > 0 && amount <= accountList.get(indexFrom).getBalance()) {
                 System.out.println("\nList of all accounts:");
                 for (int i = 0; i < accountList.size(); i++) {
-                    System.out.println((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");
+                    PrintColor.cyan((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");
                 }
                 System.out.print("Enter the number of the account to transfer to: ");
                 int indexTo = scanner.nextInt() - 1;
@@ -147,15 +148,15 @@ public class Operations {
                 if (indexTo >= 0 && indexTo < accountList.size()) {
                     accountList.get(indexFrom).withdraw(amount);
                     accountList.get(indexTo).deposit(amount);
-                    System.out.println("\nTransferred " + amount + ":- from " + accountList.get(indexFrom).getAccountName() + " to " + accountList.get(indexTo).getAccountName());
+                    PrintColor.green("\nTransferred " + amount + ":- from " + accountList.get(indexFrom).getAccountName() + " to " + accountList.get(indexTo).getAccountName());
                 } else {
-                    System.out.println("Invalid target account number.");
+                    PrintColor.red("Invalid target account number.");
                 }
             } else {
-                System.out.println("Invalid transfer amount. Please enter a positive number " + "less than or equal to the balance of the source account.");
+                PrintColor.red("Invalid transfer amount. Please enter a positive number " + "less than or equal to the balance of the source account.");
             }
         } else {
-            System.out.println("Invalid source account number.");
+            PrintColor.red("Invalid source account number.");
         }
 
         System.out.print("\nPress [ENTER] to return to the menu...");
@@ -167,12 +168,12 @@ public class Operations {
     public void listAll(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
         if (accountList.isEmpty()) {
-            System.out.println("No accounts to display.");
+            PrintColor.red("No accounts to display.");
         } else {
-            System.out.println(Menu.textBlocks());
+            PrintColor.cyan(Menu.textBlocks());
             System.out.println("\nList of all accounts:");
             for (BankSystem account : Main.accountList) {
-                System.out.println(account.getAccountName() + account.toString());
+                PrintColor.green(account.getAccountName() + account.toString());
             }
         }
         System.out.print("\nPress [ENTER] to return to the menu...");
@@ -183,20 +184,20 @@ public class Operations {
     //Method to create new account
     public void openAccount(Scanner scanner, List<BankSystem> accountList) {
         clearScreen();
-        System.out.println(Menu.textBlocks());
+        PrintColor.cyan(Menu.textBlocks());
         System.out.println("\nOpen a new bank account:");
         System.out.print("Enter account name: ");
         String accountName = scanner.nextLine();
 
         if (accountName.isEmpty()) {
-            System.out.println("Account name cannot be empty.");
+            PrintColor.red("Account name cannot be empty.");
             return;
         }
 
         // Check if the account already exists
         for (BankSystem account : accountList) {
             if (account.getAccountName().equalsIgnoreCase(accountName)) {
-                System.out.println("Account with this name already exists.");
+                PrintColor.red("Account with this name already exists.");
                 return;
             }
         }
@@ -210,16 +211,16 @@ public class Operations {
                 scanner.nextLine();
 
                 if (balance < 0) {
-                    System.out.println("Initial deposit must be a positive number.");
+                    PrintColor.red("Initial deposit must be a positive number.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                PrintColor.red("Invalid input. Please enter a valid number.");
                 scanner.nextLine(); // Clear the buffer
             }
         }
 
         accountList.add(new BankSystem(accountName, balance));
-        System.out.println("\nNew account created: " + accountName + " - Balance: " + balance + ":-");
+        PrintColor.green("\nNew account created: " + accountName + " - Balance: " + balance + ":-");
 
         System.out.print("\nPress [ENTER] to return to the menu...");
     }
@@ -230,11 +231,11 @@ public class Operations {
     public void closeAccount(Scanner scanner, List<BankSystem> accountList) {
 
         if (accountList.isEmpty()) {
-            System.out.println("No accounts to delete.");
+            PrintColor.red("No accounts to delete.");
             return;
         }
 
-        System.out.println(Menu.textBlocks());
+        PrintColor.cyan(Menu.textBlocks());
         System.out.println("\nClose an existing bank account:");
 
         for (int i = 0; i < accountList.size(); i++) {
@@ -245,14 +246,14 @@ public class Operations {
         int index = scanner.nextInt() - 1;
         scanner.nextLine();
 
-        System.out.println("Do you want to proceed with an deleting account? (yes/no)");
+        PrintColor.red("Do you want to proceed with an deleting account? (yes/no)");
         String response = scanner.next().trim().toLowerCase();
 
         if (index >= 0 && index < accountList.size() && "yes".equals(response)) {
             BankSystem accountToDelete = accountList.remove(index);
             System.out.println("\nDeleted account: " + accountToDelete.getAccountName());
         } else {
-            System.out.println("Invalid input.");
+            PrintColor.red("Invalid input.");
         }
 
         System.out.print("\nPress [ENTER] to return to the menu...");

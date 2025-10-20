@@ -22,19 +22,19 @@ public class Menu {
 
     static void displayMenu() {
         Operations.clearScreen();
-        System.out.println(textBlocks());
+        PrintColor.cyan(textBlocks());
         System.out.println("\nWelcome to the Banking System!");
-        System.out.println("What would you like to do?");
+        System.out.println("What would you like to do today?");
         System.out.println("---------------------------------------");
-        System.out.println("[1] - List my accounts");
-        System.out.println("[2] - Make deposit");
-        System.out.println("[3] - Make withdraw");
-        System.out.println("[4] - Transfer between accounts");
+        PrintColor.cyan("[1] - List my accounts");
+        PrintColor.cyan("[2] - Make deposit");
+        PrintColor.cyan("[3] - Make withdraw");
+        PrintColor.cyan("[4] - Transfer between accounts");
         System.out.println("---------------------------------------");
-        System.out.println("[5] - Open new account");
-        System.out.println("[6] - Close existing account");
+        PrintColor.cyan("[5] - Open new account");
+        PrintColor.cyan("[6] - Close existing account");
         System.out.println("---------------------------------------");
-        System.out.println("[0] - Exit program");
+        PrintColor.red("[0] - Exit program");
         System.out.print("\nEnter the corresponding number and press [ENTER]:");
     }
 

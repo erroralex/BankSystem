@@ -3,7 +3,13 @@ package com.alexander;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-//58. Implementera en klass BankSystem som hanterar flera konton och överföringar mellan dem.
+/**
+ * Bankplattform – konton & transaktioner
+ * Bygg ett system där kunder kan öppna olika konton, sätta in/ta ut pengar, göra
+ * överföringar mellan konton och få kontoutdrag. Systemet ska hantera ränta,
+ * nekade transaktioner vid otillräckligt saldo, sökbara transaktionshistoriker och
+ * möjlighet att skapa enkla månadssammanställningar.
+ */
 public class Main {
 
 

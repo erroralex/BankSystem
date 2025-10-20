@@ -19,9 +19,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        accountList.add(new BankSystem("Savings", 1_00_000));
-        accountList.add(new BankSystem("Private", 10_000));
-        accountList.add(new BankSystem("Household", 1_000));
+        accountList.add(new BankSystem("Savings", 1_00_000, 0.02));
+        accountList.add(new BankSystem("Private", 10_000, 0.015));
+        accountList.add(new BankSystem("Household", 1_000, 0.018));
 
         while (isRunning) {
             Menu.displayMenu();

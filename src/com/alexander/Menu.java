@@ -30,9 +30,10 @@ public class Menu {
         PrintColor.cyan("[2] - Make deposit");
         PrintColor.cyan("[3] - Make withdraw");
         PrintColor.cyan("[4] - Transfer between accounts");
+        PrintColor.cyan("[5] - See interest rate");
         System.out.println("---------------------------------------");
-        PrintColor.cyan("[5] - Open new account");
-        PrintColor.cyan("[6] - Close existing account");
+        PrintColor.cyan("[8] - Open new account");
+        PrintColor.cyan("[9] - Close existing account");
         System.out.println("---------------------------------------");
         PrintColor.red("[0] - Exit program");
         System.out.print("\nEnter the corresponding number and press [ENTER]:");
@@ -63,11 +64,16 @@ public class Menu {
                 break;
 
             case 5:
+                Operations interestRate = new Operations();
+                interestRate.interestRate(scanner, accountList);
+                break;
+
+            case 8:
                 Operations openAccount = new Operations();
                 openAccount.openAccount(scanner, accountList);
                 break;
 
-            case 6:
+            case 9:
                 Operations closeAccount = new Operations();
                 closeAccount.closeAccount(scanner, accountList);
                 break;

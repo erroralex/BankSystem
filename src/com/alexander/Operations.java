@@ -4,6 +4,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 
+import static com.alexander.Main.accountList;
+import static com.alexander.Main.scanner;
+
 public class Operations {
     //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -52,8 +55,7 @@ public class Operations {
                 }
             }
             accountList.get(index).deposit(amount);
-            PrintColor.green("\nDeposited " + amount + ":- to " + accountList.get(index).getAccountName() + " account. " +
-                    "New Balance: " + accountList.get(index).getBalance() + ":-");
+            PrintColor.green("\nDeposited " + amount + ":- to " + accountList.get(index).getAccountName() + " account. " + "New Balance: " + accountList.get(index).getBalance() + ":-");
 
             System.out.print("\nPress [ENTER] to return to the menu...");
             scanner.nextLine();
@@ -219,8 +221,25 @@ public class Operations {
             }
         }
 
-        accountList.add(new BankSystem(accountName, balance));
-        PrintColor.green("\nNew account created: " + accountName + " - Balance: " + balance + ":-");
+        //Set interest rate
+        double interest = 0;
+        while (interest <= 0) {
+            try {
+                System.out.println("Enter interest rate (0.03 = 3%)");
+                interest = scanner.nextDouble() * 100;
+                scanner.nextLine();
+
+                if (interest < 0) {
+                    PrintColor.red("Interest must be a positive number.");
+                }
+            } catch (InputMismatchException e) {
+                PrintColor.red("Invalid input. Please enter a valid number.");
+                scanner.nextLine(); // Clear the buffer
+            }
+        }
+
+        accountList.add(new BankSystem(accountName, balance, interest));
+        PrintColor.green("\nNew account created: " + accountName + " - Balance: " + balance + ":-, interest rate: " + interest + "%");
 
         System.out.print("\nPress [ENTER] to return to the menu...");
     }
@@ -259,5 +278,34 @@ public class Operations {
         System.out.print("\nPress [ENTER] to return to the menu...");
         scanner.nextLine();
     }
+
+    public void interestRate(Scanner scanner, List<BankSystem> accountList) {
+        clearScreen();
+        if (accountList.isEmpty()) {
+            PrintColor.red("No accounts to transfer from.");
+            return;
+        }
+
+        PrintColor.cyan(Menu.textBlocks());
+        System.out.println("\nList of all accounts:");
+        for (int i = 0; i < accountList.size(); i++) {
+            PrintColor.green((i + 1) + ": " + accountList.get(i).getAccountName() + " - Balance: " + accountList.get(i).getBalance() + ":-");
+        }
+
+        System.out.print("Enter the number of the account to see it's interest-rate: ");
+        int index = scanner.nextInt() - 1;
+        scanner.nextLine();
+
+        accountList.get(index);
+        PrintColor.green(accountList.get(index).getAccountName() + " accounts interest rate is: " + accountList.get(index).getInterest() * 100 + "%");
+
+        double interestYear = accountList.get(index).getBalance() * accountList.get(index).getInterest();
+
+        System.out.println("This will result in " + interestYear + ":- in earnings over a year with the current balance");
+
+        System.out.print("\nPress [ENTER] to return to the menu...");
+    }
 }
+
+
 
